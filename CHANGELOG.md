@@ -10,3 +10,4 @@
 - Add pinned regression fixtures and a comparative benchmark.
 - Add the MVP plan and dataset acceptance criteria.
 - Add a PyPI release workflow and archive content examination.
+- Use the `table-proof-py` distribution name on PyPI.

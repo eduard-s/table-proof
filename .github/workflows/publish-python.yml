@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/project/table-proof/
+      url: https://pypi.org/project/table-proof-py/
     permissions:
       id-token: write
     steps:

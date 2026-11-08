@@ -11,7 +11,7 @@ This is an alpha Python library. It needs Python 3.11 or later.
 ## Installation
 
 ```sh
-python -m pip install table-proof
+python -m pip install table-proof-py
 table-proof source.pdf docling-export.json --html report.html --json report.json
 ```
 
@@ -20,7 +20,7 @@ table-proof source.pdf docling-export.json --html report.html --json report.json
 For the optional local vision model, install the extra dependencies:
 
 ```sh
-python -m pip install 'table-proof[vision]'
+python -m pip install 'table-proof-py[vision]'
 ```
 
 ## Try the real regression case

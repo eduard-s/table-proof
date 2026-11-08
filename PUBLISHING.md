@@ -1,6 +1,8 @@
 # Publish TableProof
 
-The distribution name is `table-proof`. The Python import is `table_proof`. The command is `table-proof`.
+The distribution name is `table-proof-py`. The Python import is `table_proof`. The command is `table-proof`.
+
+PyPI rejected `table-proof` because it was too similar to an existing project. Use `table-proof-py` for installation and publisher configuration.
 
 Version `0.1.0` is an alpha release. The current benchmark does not establish broad accuracy.
 
@@ -24,13 +26,13 @@ The archive examination rejects cache files, model weights, symbolic links, and 
 
 ## Configure the first publication
 
-1. Sign in to the PyPI account that will own `table-proof`.
+1. Sign in to the PyPI account that will own `table-proof-py`.
 2. Open [PyPI Publishing](https://pypi.org/manage/account/publishing/).
 3. Add a pending GitHub publisher with these values:
 
 | Field | Value |
 | --- | --- |
-| PyPI project name | `table-proof` |
+| PyPI project name | `table-proof-py` |
 | GitHub owner | `eduard-s` |
 | GitHub repository | `table-proof` |
 | Workflow filename | `publish-python.yml` |
@@ -75,7 +77,7 @@ After publication, run these commands from the repository root:
 
 ```sh
 python3 -m venv .venv-published
-.venv-published/bin/python -m pip install --index-url https://pypi.org/simple 'table-proof==0.1.0'
+.venv-published/bin/python -m pip install --index-url https://pypi.org/simple 'table-proof-py==0.1.0'
 .venv-published/bin/python -m table_proof --version
 .venv-published/bin/python scripts/wheel_smoke.py
 ```

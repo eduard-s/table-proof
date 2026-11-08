@@ -3,7 +3,7 @@ requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
-name = "table-proof"
+name = "table-proof-py"
 version = "0.1.0"
 description = "Audit PDF table cell associations against source evidence"
 readme = "README.md"
