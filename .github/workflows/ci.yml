@@ -40,6 +40,8 @@ jobs:
         run: |
           python -m build
           python -m twine check dist/*
+      - name: Examine distribution contents
+        run: python scripts/examine_distribution.py dist/*
       - name: Install the wheel in a new environment
         run: |
           python -m venv .venv-wheel

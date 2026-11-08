@@ -39,6 +39,40 @@ core-metadata-version = "2.4"
 
 [tool.hatch.build.targets.sdist]
 core-metadata-version = "2.4"
+include = [
+  "/src/table_proof/**/*.py",
+  "/src/table_proof/py.typed",
+  "/tests/**/*.py",
+  "/spec/*.json",
+  "/scripts/*.py",
+  "/docs/**/*.md",
+  "/docs/assets/*.json",
+  "/benchmarks/fixtures/**/*.json",
+  "/benchmarks/fixtures/**/*.md",
+  "/benchmarks/fixtures/**/*.pdf",
+  "/benchmarks/*.py",
+  "/benchmarks/*.md",
+  "/benchmarks/*.txt",
+  "/benchmarks/DOCLING_LICENSE",
+  "/benchmarks/results.json",
+  "/.gitignore",
+  "/CHANGELOG.md",
+  "/CONTRIBUTING.md",
+  "/LICENSE",
+  "/PUBLISHING.md",
+  "/README.md",
+  "/THIRD_PARTY.md",
+  "/pyproject.toml",
+]
+exclude = [
+  "/benchmarks/downloads/**",
+  "**/.venv*/**",
+  "**/__pycache__/**",
+  "**/.cache/**",
+  "**/*-cache/**",
+  "**/*.py[cod]",
+  "**/*.safetensors",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

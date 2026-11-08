@@ -116,7 +116,7 @@ Use Python 3.12 for the type analysis. CI runs tests on Python 3.11 through 3.14
 - [Benchmark reproduction](benchmarks/README.md)
 - [Optional vision model](docs/VISION.md)
 - [Development and contribution](CONTRIBUTING.md)
-- [Deferred release](PUBLISHING.md)
+- [Release instructions](PUBLISHING.md)
 
 ## License
 
