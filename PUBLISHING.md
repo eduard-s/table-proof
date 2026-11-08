@@ -4,7 +4,7 @@ The distribution name is `table-proof`. The Python import is `table_proof`. The 
 
 Version `0.1.0` is an alpha release. The current benchmark does not establish broad accuracy.
 
-PyPI publication is not complete. The first release needs a pending trusted publisher for this repository.
+The first release needs a pending trusted publisher for this repository. Later releases use that same publisher.
 
 ## Local distribution
 

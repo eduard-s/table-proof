@@ -20,7 +20,7 @@ The user needs a short evidence report before data enters a database or AI retri
 | Broad real-document accuracy | Not established | Independent corpus needed |
 | Model calibration | Not established | Labeled development set needed |
 | Repeat use by external teams | Not established | Pilot evidence needed |
-| PyPI publication | Deferred | Separate release round |
+| PyPI release workflow | Implemented | Version tag, distribution tests, and trusted publisher |
 
 ## Stage 1: reproducible alpha
 
