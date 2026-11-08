@@ -1,0 +1,36 @@
+{
+  "id": "synthetic-header-swap",
+  "stratum": "synthetic_control",
+  "source_pdf": "fixtures/synthetic/header-swap.pdf",
+  "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+  "extracted_json": "fixtures/synthetic/header-swap.json",
+  "extracted_sha256": "5bea55d6dc129ee1b76ea348688d71637145eca06f724606bccc71428ae5193d",
+  "gold": {
+    "has_error": true,
+    "errors": [
+      {
+        "table_index": 0,
+        "row": 0,
+        "col": 1,
+        "type": "header-swap",
+        "expected": "Dose (mg)",
+        "observed": "Volume (ml)"
+      },
+      {
+        "table_index": 0,
+        "row": 0,
+        "col": 2,
+        "type": "header-swap",
+        "expected": "Volume (ml)",
+        "observed": "Dose (mg)"
+      }
+    ]
+  },
+  "metadata": {
+    "fixture_license": "MIT",
+    "generator": "benchmarks/make_synthetic.py",
+    "expected_support": "supported",
+    "gold_source": "Declared fixture text and explicit mutations, not model output.",
+    "independence_note": "One generated layout family; cases are correlated."
+  }
+}

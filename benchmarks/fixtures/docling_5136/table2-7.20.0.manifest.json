@@ -1,0 +1,71 @@
+{
+  "id": "docling-5136-parse-7.20.0",
+  "stratum": "real_source_pdf",
+  "source_pdf": "fixtures/docling_5136/table2.pdf",
+  "source_sha256": "fc4c48b8ef82e85be9955159e42c1fcc81a9f597dd0d0075b8ab81f856116303",
+  "extracted_json": "fixtures/docling_5136/table2-7.20.0.json",
+  "extracted_sha256": "d533b83ab0f0a942ddae066443d9f9c29fd2eff8d7ebb3323fa15d9cfba351fd",
+  "gold": {
+    "has_error": true,
+    "errors": [
+      {
+        "table_index": 0,
+        "row": 4,
+        "col": 7,
+        "type": "cell_text_mismatch",
+        "expected": "0.38 a",
+        "observed": "0.38"
+      }
+    ]
+  },
+  "metadata": {
+    "source_issue": "https://github.com/docling-project/docling/issues/5136",
+    "source_record": "fixtures/docling_5136/source.json",
+    "package_versions": {
+      "docling": "2.145.0",
+      "docling-core": "2.106.0",
+      "docling-parse": "7.20.0",
+      "docling-ibm-models": "4.0.4",
+      "torch": "2.15.0",
+      "transformers": "5.22.2"
+    },
+    "source_pdf": "fixtures/docling_5136/table2.pdf",
+    "source_sha256": "fc4c48b8ef82e85be9955159e42c1fcc81a9f597dd0d0075b8ab81f856116303",
+    "extracted_json": "fixtures/docling_5136/table2-7.20.0.json",
+    "extracted_sha256": "d533b83ab0f0a942ddae066443d9f9c29fd2eff8d7ebb3323fa15d9cfba351fd",
+    "models": {
+      "docling-project/docling-layout-heron": {
+        "revision": "8f39ad3c0b4c58e9c2d2c84a38465abf757272d8",
+        "files": {
+          "config.json": "fdea30805ce2f5666b147fca941dcdd27ad468e27d6ed21902207d3da056a97d",
+          "model.safetensors": "00333a43451945aaf89db8ca9c0a17e75d1537c17db60fdb91aa95f4c7929e0c",
+          "preprocessor_config.json": "cd38cd59999e7a95d68e487fbe5132df3d4e5c32a0836add57e6126ba0c4eaf1"
+        }
+      },
+      "docling-project/docling-models": {
+        "revision": "fc0f2d45e2218ea24bce5045f58a389aed16dc23",
+        "files": {
+          "config.json": "9c34024dc28ff47b75818f415e769809798c29bf9bde6f2ccc63a4acb62396d9",
+          "model_artifacts/tableformer/accurate/tableformer_accurate.safetensors": "2a7d6c924b3cd12fb99a09280ca9c33a89c5d60b93253617d2e088c1a40374d9",
+          "model_artifacts/tableformer/accurate/tm_config.json": "984e122ceb8ccf84d84c9d2882f6f2302a44b4f1e577babd6289892c36f3cffd",
+          "model_artifacts/tableformer/fast/tableformer_fast.safetensors": "3119563aab5a7c96fda4d621119b63fd8806272b86c30936d15507616422f718",
+          "model_artifacts/tableformer/fast/tm_config.json": "dca6762508dddfae6d57d6cb4ef822c6000119dff0f3b6489db7413118c2622a"
+        }
+      }
+    },
+    "python": "3.12.14",
+    "pipeline": {
+      "do_ocr": false,
+      "do_cell_matching": false,
+      "device": "cpu",
+      "num_threads": 4,
+      "status": "success",
+      "table_mode": "accurate"
+    },
+    "gold_annotation": "AI-assisted visual transcription of Table 2, not independent human gold. A second AI visual pass confirms the header and first data row. Superscript significance letters remain part of cell text.",
+    "normalization": "Ignore whitespace only when comparing extracted text with visual gold.",
+    "source_license": "CC-BY-2.0",
+    "output_note": "Actual Docling model output. No cell text or geometry repaired.",
+    "independence_note": "Both parser versions share one source table and model weights."
+  }
+}

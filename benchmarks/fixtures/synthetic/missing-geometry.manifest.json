@@ -1,0 +1,19 @@
+{
+  "id": "synthetic-missing-geometry",
+  "stratum": "synthetic_control",
+  "source_pdf": "fixtures/synthetic/missing-geometry.pdf",
+  "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+  "extracted_json": "fixtures/synthetic/missing-geometry.json",
+  "extracted_sha256": "715ecf5b006d285b0dfa9c85b5bd9d5958c801e39a6250d9b930ddf9c6076c95",
+  "gold": {
+    "has_error": false,
+    "errors": []
+  },
+  "metadata": {
+    "fixture_license": "MIT",
+    "generator": "benchmarks/make_synthetic.py",
+    "expected_support": "uncertain",
+    "gold_source": "Declared fixture text and explicit mutations, not model output.",
+    "independence_note": "One generated layout family; cases are correlated."
+  }
+}

@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "table-proof"
+version = "0.1.0"
+description = "Audit PDF table cell associations against source evidence"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "Eduard Smirnov"}]
+dependencies = ["pdfplumber>=0.11.4,<0.12", "pydantic>=2.11,<3"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+vision = ["torch>=2.6", "transformers>=4.50,<5", "timm>=1,<2"]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "hypothesis>=6,<7", "ruff>=0.14,<1", "mypy>=1.15,<2", "reportlab>=4,<5", "build>=1,<2", "twine>=6,<7", "docling-core>=2.48,<3", "jsonschema>=4,<5"]
+
+[project.scripts]
+table-proof = "table_proof.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/eduard-s/table-proof"
+Repository = "https://github.com/eduard-s/table-proof"
+Issues = "https://github.com/eduard-s/table-proof/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/table_proof"]
+core-metadata-version = "2.4"
+
+[tool.hatch.build.targets.sdist]
+core-metadata-version = "2.4"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
+markers = ["vision: optional model integration", "integration: real dependency integration"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["table_proof"]
+
+[[tool.mypy.overrides]]
+module = ["pdfplumber.*", "PIL.*", "transformers.*", "timm.*"]
+ignore_missing_imports = true

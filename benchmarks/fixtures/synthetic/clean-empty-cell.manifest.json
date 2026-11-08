@@ -1,0 +1,19 @@
+{
+  "id": "synthetic-clean-empty-cell",
+  "stratum": "synthetic_control",
+  "source_pdf": "fixtures/synthetic/clean-empty-cell.pdf",
+  "source_sha256": "8c559ab109b38d33a040e4c89bd31c9fff59084a9fde2d3a2b9c5703cc3a0e23",
+  "extracted_json": "fixtures/synthetic/clean-empty-cell.json",
+  "extracted_sha256": "6a46c006fc2b103d4d933ebec330458ee278948b25427fc496beb0ed37eaa132",
+  "gold": {
+    "has_error": false,
+    "errors": []
+  },
+  "metadata": {
+    "fixture_license": "MIT",
+    "generator": "benchmarks/make_synthetic.py",
+    "expected_support": "supported",
+    "gold_source": "Declared fixture text and explicit mutations, not model output.",
+    "independence_note": "One generated layout family; cases are correlated."
+  }
+}

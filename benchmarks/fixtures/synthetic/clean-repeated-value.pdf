@@ -1,0 +1,95 @@
+%PDF-1.3
+%“Œ‹ž ReportLab Generated PDF document (opensource)
+1 0 obj
+<<
+/F1 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/Contents 7 0 R /MediaBox [ 0 0 612 792 ] /Parent 6 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+4 0 obj
+<<
+/PageMode /UseNone /Pages 6 0 R /Type /Catalog
+>>
+endobj
+5 0 obj
+<<
+/Author (TableProof contributors) /CreationDate (D:20000101000000+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20000101000000+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (unspecified) /Title (TableProof benchmark fixture) /Trapped /False
+>>
+endobj
+6 0 obj
+<<
+/Count 1 /Kids [ 3 0 R ] /Type /Pages
+>>
+endobj
+7 0 obj
+<<
+/Length 795
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+BT /F1 11 Tf 13.2 TL ET
+n 72 662 156 34 re S
+BT 1 0 0 1 80 674 Tm (Sample) Tj T* ET
+n 228 662 156 34 re S
+BT 1 0 0 1 236 674 Tm (Dose \(mg\)) Tj T* ET
+n 384 662 156 34 re S
+BT 1 0 0 1 392 674 Tm (Volume \(ml\)) Tj T* ET
+n 72 628 156 34 re S
+BT 1 0 0 1 80 640 Tm (Alpha) Tj T* ET
+n 228 628 156 34 re S
+BT 1 0 0 1 236 640 Tm (12.5) Tj T* ET
+n 384 628 156 34 re S
+BT 1 0 0 1 392 640 Tm (3.0) Tj T* ET
+n 72 594 156 34 re S
+BT 1 0 0 1 80 606 Tm (Beta) Tj T* ET
+n 228 594 156 34 re S
+BT 1 0 0 1 236 606 Tm (12.5) Tj T* ET
+n 384 594 156 34 re S
+BT 1 0 0 1 392 606 Tm (4.0) Tj T* ET
+n 72 560 156 34 re S
+BT 1 0 0 1 80 572 Tm (Gamma) Tj T* ET
+n 228 560 156 34 re S
+BT 1 0 0 1 236 572 Tm (30.0) Tj T* ET
+n 384 560 156 34 re S
+BT 1 0 0 1 392 572 Tm (5.0) Tj T* ET
+ 
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000061 00000 n 
+0000000092 00000 n 
+0000000199 00000 n 
+0000000392 00000 n 
+0000000460 00000 n 
+0000000755 00000 n 
+0000000814 00000 n 
+trailer
+<<
+/ID 
+[<ae233b43c8fa5c8f03c7bacb49c6e99b><ae233b43c8fa5c8f03c7bacb49c6e99b>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 5 0 R
+/Root 4 0 R
+/Size 8
+>>
+startxref
+1659
+%%EOF

@@ -1,0 +1,386 @@
+{
+  "case": "docling-5136-original-page6-top-table2",
+  "data_kind": "Public real-source PDF page and unchanged Docling model output; one selected table.",
+  "source_file": "benchmarks/fixtures/docling_5136/page6.pdf",
+  "source_sha256": "6e6c22cb406fc1975fbec017a60483260bee5a58c0d364526ca54c1ea29085a6",
+  "extraction_file": "benchmarks/fixtures/docling_5136/parse-7.24.2.json",
+  "extraction_sha256": "b9655106710508a9a5861c79c07980c3356093cc22d99198137cef89793f3cac",
+  "table_id": "#/tables/0",
+  "selected_table_index": 0,
+  "other_tables_not_evaluated_by_vision": 1,
+  "model_id": "microsoft/table-transformer-structure-recognition-v1.1-all",
+  "model_revision": "7587a7ef111d9dcbf8ac695f1376ab7014340a0c",
+  "device": "cpu",
+  "python": "3.13.11",
+  "versions": {
+    "torch": "2.15.0",
+    "transformers": "4.57.6",
+    "timm": "1.0.31",
+    "pdfplumber": "0.11.10"
+  },
+  "image_size": [
+    1022,
+    269
+  ],
+  "crop_pdf_points": {
+    "x0": 42.03667363347303,
+    "top": 91.80412702826152,
+    "x1": 552.9543298212858,
+    "bottom": 226.51014175631087
+  },
+  "inference_seconds": 0.25133741599711357,
+  "total_seconds_including_load": 2.850624833998154,
+  "model_region_counts": {
+    "table column": 8,
+    "table row": 8,
+    "table column header": 1,
+    "table": 1
+  },
+  "extracted_rows": 8,
+  "extracted_columns": 8,
+  "vision_findings": [],
+  "geometry_result": {
+    "table_id": "#/tables/0",
+    "page": 1,
+    "status": "review",
+    "checked_cells": 62,
+    "total_cells": 64,
+    "findings": [
+      {
+        "code": "missing_cell_text",
+        "severity": "error",
+        "table_id": "#/tables/0",
+        "page": 1,
+        "cell_id": "#/tables/0/cells/2",
+        "message": "Source words are absent from the empty cell.",
+        "expected_text": "s.l. An. gambiae",
+        "observed_text": "",
+        "bbox": {
+          "x0": 188.53665485978127,
+          "top": 106.62886925414205,
+          "x1": 245.3250251710415,
+          "bottom": 116.15377248823643
+        },
+        "evidence": "pdf_text_geometry"
+      },
+      {
+        "code": "missing_cell_text",
+        "severity": "error",
+        "table_id": "#/tables/0",
+        "page": 1,
+        "cell_id": "#/tables/0/cells/3",
+        "message": "Source words are absent from the empty cell.",
+        "expected_text": "An. funestus",
+        "observed_text": "",
+        "bbox": {
+          "x0": 263.7005239725113,
+          "top": 107.04063732549548,
+          "x1": 304.36057567596436,
+          "bottom": 116.14381575584412
+        },
+        "evidence": "pdf_text_geometry"
+      },
+      {
+        "code": "source_assignment_ambiguous",
+        "severity": "uncertain",
+        "table_id": "#/tables/0",
+        "page": 1,
+        "cell_id": "#/tables/0/cells/39",
+        "message": "Source words cross a boundary, overlap, or have unreadable text.",
+        "expected_text": null,
+        "observed_text": null,
+        "bbox": {
+          "x0": 518.8883116841316,
+          "top": 165.35313296318054,
+          "x1": 537.5904968380928,
+          "bottom": 174.84110629558563
+        },
+        "evidence": "pdf_text_geometry"
+      },
+      {
+        "code": "missing_cell_text",
+        "severity": "error",
+        "table_id": "#/tables/0",
+        "page": 1,
+        "cell_id": "#/tables/0/cells/4",
+        "message": "Source words are absent from the empty cell.",
+        "expected_text": "spp. Culex",
+        "observed_text": "",
+        "bbox": {
+          "x0": 323.7909859418869,
+          "top": 107.02649176120758,
+          "x1": 361.40566289424896,
+          "bottom": 116.22981426119804
+        },
+        "evidence": "pdf_text_geometry"
+      },
+      {
+        "code": "missing_cell_text",
+        "severity": "error",
+        "table_id": "#/tables/0",
+        "page": 1,
+        "cell_id": "#/tables/0/cells/5",
+        "message": "Source words are absent from the empty cell.",
+        "expected_text": "spp. Mansonia",
+        "observed_text": "",
+        "bbox": {
+          "x0": 379.74553525447845,
+          "top": 107.188306838274,
+          "x1": 431.0083109140396,
+          "bottom": 116.12502829730511
+        },
+        "evidence": "pdf_text_geometry"
+      },
+      {
+        "code": "text_normalization_uncertain",
+        "severity": "uncertain",
+        "table_id": "#/tables/0",
+        "page": 1,
+        "cell_id": "#/tables/0/cells/56",
+        "message": "Text differs in token boundaries, bracket order, glyphs, or hyphens.",
+        "expected_text": "Total mosquito catches ( ) n",
+        "observed_text": "Total mosquito catches (n)",
+        "bbox": {
+          "x0": 49.78876765817404,
+          "top": 203.0429771542549,
+          "x1": 140.57200253009796,
+          "bottom": 212.60389441251755
+        },
+        "evidence": "pdf_text_geometry"
+      },
+      {
+        "code": "missing_cell_text",
+        "severity": "error",
+        "table_id": "#/tables/0",
+        "page": 1,
+        "cell_id": "#/tables/0/cells/6",
+        "message": "Source words are absent from the empty cell.",
+        "expected_text": "spp. Aedes",
+        "observed_text": "",
+        "bbox": {
+          "x0": 450.13090282678604,
+          "top": 107.61468727886677,
+          "x1": 488.2641473412514,
+          "bottom": 116.29406931996346
+        },
+        "evidence": "pdf_text_geometry"
+      },
+      {
+        "code": "missing_cell_text",
+        "severity": "error",
+        "table_id": "#/tables/0",
+        "page": 1,
+        "cell_id": "#/tables/0/cells/7",
+        "message": "Source words are absent from the empty cell.",
+        "expected_text": "Other spp.",
+        "observed_text": "",
+        "bbox": {
+          "x0": 505.8016502857208,
+          "top": 107.4933108985424,
+          "x1": 542.8222286701202,
+          "bottom": 116.30061611533165
+        },
+        "evidence": "pdf_text_geometry"
+      }
+    ]
+  },
+  "regions": [
+    {
+      "label": "table column",
+      "score": 0.9998675584793091,
+      "bbox": {
+        "x0": 150.9421104034696,
+        "top": 106.76799698027394,
+        "x1": 179.73721319342127,
+        "bottom": 212.76206514135367
+      }
+    },
+    {
+      "label": "table row",
+      "score": 0.9996145963668823,
+      "bbox": {
+        "x0": 50.318993951282444,
+        "top": 150.34813761959452,
+        "x1": 543.4549452951236,
+        "bottom": 163.12393258282833
+      }
+    },
+    {
+      "label": "table column",
+      "score": 0.9999762773513794,
+      "bbox": {
+        "x0": 442.2820421918053,
+        "top": 106.85764977820288,
+        "x1": 498.68969910344475,
+        "bottom": 212.82384327748727
+      }
+    },
+    {
+      "label": "table column",
+      "score": 0.9998354911804199,
+      "bbox": {
+        "x0": 316.7616837358567,
+        "top": 106.75299371864149,
+        "x1": 371.65487525889534,
+        "bottom": 212.77587257388222
+      }
+    },
+    {
+      "label": "table column",
+      "score": 0.9999350309371948,
+      "bbox": {
+        "x0": 372.2909116659023,
+        "top": 106.79397856436648,
+        "x1": 442.197003407141,
+        "bottom": 212.77899013474092
+      }
+    },
+    {
+      "label": "table row",
+      "score": 0.9997561573982239,
+      "bbox": {
+        "x0": 50.22069169453026,
+        "top": 121.54525455316592,
+        "x1": 543.5388551113515,
+        "bottom": 137.5204826427629
+      }
+    },
+    {
+      "label": "table column",
+      "score": 0.9999439716339111,
+      "bbox": {
+        "x0": 498.6258055924698,
+        "top": 106.76681643333113,
+        "x1": 543.6925778946809,
+        "bottom": 212.81547629430034
+      }
+    },
+    {
+      "label": "table column header",
+      "score": 0.9993981122970581,
+      "bbox": {
+        "x0": 50.2366946314138,
+        "top": 106.8285057419035,
+        "x1": 543.5252769774528,
+        "bottom": 121.39722772048216
+      }
+    },
+    {
+      "label": "table row",
+      "score": 0.9998364448547363,
+      "bbox": {
+        "x0": 50.28074442437149,
+        "top": 137.50726739397584,
+        "x1": 543.4604985993249,
+        "bottom": 150.3074106603376
+      }
+    },
+    {
+      "label": "table row",
+      "score": 0.9998316764831543,
+      "bbox": {
+        "x0": 50.213504055953834,
+        "top": 188.40301865414037,
+        "x1": 543.5544470808396,
+        "bottom": 201.71305504521
+      }
+    },
+    {
+      "label": "table column",
+      "score": 0.9999735355377197,
+      "bbox": {
+        "x0": 178.95804189625983,
+        "top": 106.75661941135583,
+        "x1": 254.4626728578706,
+        "bottom": 212.82054997177625
+      }
+    },
+    {
+      "label": "table row",
+      "score": 0.9997451901435852,
+      "bbox": {
+        "x0": 50.258863986269446,
+        "top": 162.601687651434,
+        "x1": 543.489760240693,
+        "bottom": 175.44841476528353
+      }
+    },
+    {
+      "label": "table",
+      "score": 0.9999758005142212,
+      "bbox": {
+        "x0": 50.33080997904034,
+        "top": 106.80840301414833,
+        "x1": 543.6072034707516,
+        "bottom": 212.81682876555521
+      }
+    },
+    {
+      "label": "table row",
+      "score": 0.9998458623886108,
+      "bbox": {
+        "x0": 50.181102471121584,
+        "top": 201.7366277786636,
+        "x1": 543.4994022413941,
+        "bottom": 212.61065713053273
+      }
+    },
+    {
+      "label": "table column",
+      "score": 0.9999641180038452,
+      "bbox": {
+        "x0": 254.38361455465372,
+        "top": 106.73876220614318,
+        "x1": 316.2440364513821,
+        "bottom": 212.7421219211547
+      }
+    },
+    {
+      "label": "table column",
+      "score": 0.999942421913147,
+      "bbox": {
+        "x0": 50.13890155468282,
+        "top": 106.77166947460655,
+        "x1": 152.2077297897991,
+        "bottom": 212.85873245121468
+      }
+    },
+    {
+      "label": "table row",
+      "score": 0.9998136162757874,
+      "bbox": {
+        "x0": 50.2151336227258,
+        "top": 106.77447184089314,
+        "x1": 543.5780638800252,
+        "bottom": 121.35290372256293
+      }
+    },
+    {
+      "label": "table row",
+      "score": 0.9997202754020691,
+      "bbox": {
+        "x0": 50.28423144934814,
+        "top": 175.3982587126452,
+        "x1": 543.4889058862005,
+        "bottom": 188.35265629232757
+      }
+    }
+  ],
+  "limitations": [
+    "One selected table; no general accuracy estimate.",
+    "The model inspects structure, not cell text.",
+    "Source-image reading for benchmark labels is AI-assisted, not independent human adjudication.",
+    "Model defaults unchanged; no threshold tuning on this case."
+  ],
+  "procedure": [
+    "normalize_document(extraction, read_pdf_pages(source))[0]",
+    "detect_structure(source, table, config=VisionConfig())",
+    "compare_structure(table, result, config=VisionConfig())"
+  ],
+  "geometry_evidence_note": "Geometry recomputed after source superscript separation and bracket-token normalization. Original model outputs and runtime remain unchanged.",
+  "geometry_code_sha256": {
+    "src/table_proof/pdf.py": "a048793779b76e1f723ac744994c08b105d569a4cbab5caf7b0047c0c1b4b3f6",
+    "src/table_proof/auditor.py": "a476dc007f8adc8904abb292f83b4b78f6d8bdc052794d359e507def2a3d13ea",
+    "src/table_proof/docling.py": "d16bd9de3f46f1ff64c9bd6fd50ee200297a83d3d95a660d1c0178b0c65157a7"
+  }
+}

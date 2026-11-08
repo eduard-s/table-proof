@@ -1,0 +1,53 @@
+{
+  "id": "docling-5198-fixed",
+  "stratum": "real_library_reproducer",
+  "source_pdf": "fixtures/docling_5198/source.pdf",
+  "source_sha256": "9289b31052fb4d60a06756879a9f33eadae84ac8ffb7716fe93ee57981454f44",
+  "extracted_json": "fixtures/docling_5198/fixed.json",
+  "extracted_sha256": "5618153ea3ed89e6628329d6c90fe2194171d979816ca1a240a6cdc4e252914d",
+  "gold": {
+    "has_error": false,
+    "errors": []
+  },
+  "metadata": {
+    "source_issue": "https://github.com/docling-project/docling/issues/5198",
+    "source_reproducer": "https://github.com/docling-project/docling-core/pull/986",
+    "upstream_license": "MIT",
+    "fixture_license": "MIT",
+    "upstream_commit": "3e3be95e9de7472e78da2068ae2b281e4dd34611",
+    "package_version": "2.106.0",
+    "package_direct_url": {
+      "archive_info": {
+        "hash": "sha256=21279ca6400b4b275b1012ca12bbfed37e7994f27896945eda1b1704105935de",
+        "hashes": {
+          "sha256": "21279ca6400b4b275b1012ca12bbfed37e7994f27896945eda1b1704105935de"
+        }
+      },
+      "url": "https://github.com/docling-project/docling-core/archive/3e3be95e9de7472e78da2068ae2b281e4dd34611.zip"
+    },
+    "document_module_sha256": "2d70cc684f3869fbd8fd8f0b2a856a362a95e5b941efe29a407c430f38a9eefc",
+    "python": "3.12.14",
+    "resolved_cells": [
+      [
+        "AAA",
+        "12.5 mg"
+      ],
+      [
+        "BBB",
+        "20.0 mg",
+        "CCC",
+        "30.0 mg"
+      ]
+    ],
+    "provenance_note": "Generated PDF and explicit boxes from known fixture geometry. Actual installed Docling concatenate output; no model inference. This is not the private invoice from the original report.",
+    "controlled_patch": {
+      "source_url": "https://github.com/docling-project/docling-core/pull/986/files/bef3c28565c623537d0723b0d3d04f5af8d56c41",
+      "patch_commit": "bef3c28565c623537d0723b0d3d04f5af8d56c41",
+      "base_commit": "3e3be95e9de7472e78da2068ae2b281e4dd34611",
+      "unpatched_module_sha256": "bd66eea79aedbabcdce680743698e4271084882a91e46e643508612ac32978e9",
+      "patch_helper_sha256": "7f8af7f84ef6bd212d17879d9eb65e8441e8dd3045e69cdc55319a13cda9bd40",
+      "description": "Only PR986's rich-cell-reference hunk, applied to the same installed base commit.",
+      "patched_module_sha256": "2d70cc684f3869fbd8fd8f0b2a856a362a95e5b941efe29a407c430f38a9eefc"
+    }
+  }
+}

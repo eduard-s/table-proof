@@ -1,0 +1,29 @@
+{
+  "title": "A Novel Synthetic Odorant Blend for Trapping of Malaria and Other African Mosquito Species",
+  "authors": [
+    "Wolfgang R. Mukabana",
+    "Collins K. Mweresa",
+    "Bruno Otieno",
+    "Philemon Omusula",
+    "Renate C. Smallegange",
+    "Joop J. A. van Loon",
+    "Willem Takken"
+  ],
+  "citation": "Journal of Chemical Ecology 38, 235–244 (2012)",
+  "copyright": "The Author(s) 2012",
+  "doi": "https://doi.org/10.1007/s10886-012-0088-8",
+  "download_url": "https://link.springer.com/content/pdf/10.1007/s10886-012-0088-8.pdf",
+  "license": "CC-BY-2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "license_evidence_url": "https://link.springer.com/article/10.1007/s10886-012-0088-8#rightslink",
+  "source_sha256": "7ae6c3e944cd2116902fcfb278730d0373618e5c7312a7da3372c0b86899fb20",
+  "page6_sha256": "6e6c22cb406fc1975fbec017a60483260bee5a58c0d364526ca54c1ea29085a6",
+  "table_excerpt_sha256": "fc4c48b8ef82e85be9955159e42c1fcc81a9f597dd0d0075b8ab81f856116303",
+  "transformation": "Copy original page 6. Remove text and vector graphics outside PDF-point rectangle [45, 95, 550, 225]. Keep table glyphs, values, fonts, positions and page size. The excerpt is derived source material, not generated content.",
+  "original_printed_table": "Table 2",
+  "original_pdf_page": 6,
+  "issue_note": "Issue 5136 calls this Table 1. The publisher PDF prints Table 2.",
+  "preparation_package": {
+    "PyMuPDF": "1.28.2"
+  }
+}

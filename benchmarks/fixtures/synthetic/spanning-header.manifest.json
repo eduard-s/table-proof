@@ -1,0 +1,19 @@
+{
+  "id": "synthetic-spanning-header",
+  "stratum": "synthetic_control",
+  "source_pdf": "fixtures/synthetic/spanning-header.pdf",
+  "source_sha256": "77872d3359ebd0a4796c819c9000d69303afc7cadc46bb0e005a355d3f60043b",
+  "extracted_json": "fixtures/synthetic/spanning-header.json",
+  "extracted_sha256": "45a42d90919f4095416fb79170d6630072dd021bcd2234e448974814ba8d5573",
+  "gold": {
+    "has_error": false,
+    "errors": []
+  },
+  "metadata": {
+    "fixture_license": "MIT",
+    "generator": "benchmarks/make_synthetic.py",
+    "expected_support": "uncertain",
+    "gold_source": "Declared fixture text and explicit mutations, not model output.",
+    "independence_note": "One generated layout family; cases are correlated."
+  }
+}

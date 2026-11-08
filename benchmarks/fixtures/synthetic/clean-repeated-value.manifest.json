@@ -1,0 +1,19 @@
+{
+  "id": "synthetic-clean-repeated-value",
+  "stratum": "synthetic_control",
+  "source_pdf": "fixtures/synthetic/clean-repeated-value.pdf",
+  "source_sha256": "73c39afdb098caf4e80cf78f2de001cda805b174b387cfed7a1724ae83ccb9e4",
+  "extracted_json": "fixtures/synthetic/clean-repeated-value.json",
+  "extracted_sha256": "5c7fffcf9d36f684c61b401a34037e05a6813fd76e1fe5dcbad1168e9c1801ad",
+  "gold": {
+    "has_error": false,
+    "errors": []
+  },
+  "metadata": {
+    "fixture_license": "MIT",
+    "generator": "benchmarks/make_synthetic.py",
+    "expected_support": "supported",
+    "gold_source": "Declared fixture text and explicit mutations, not model output.",
+    "independence_note": "One generated layout family; cases are correlated."
+  }
+}

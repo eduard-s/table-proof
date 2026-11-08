@@ -1,0 +1,2860 @@
+{
+  "schema_version": "1.0",
+  "evaluation_unit": "case/document, not cell",
+  "python": "3.12.14",
+  "package_versions": {
+    "pdfplumber": "0.11.10",
+    "pdfminer.six": "20260107",
+    "reportlab": "4.5.1",
+    "docling-core": "2.106.0",
+    "pdfmux": "1.8.7",
+    "PyMuPDF": "1.28.2",
+    "pymupdf4llm": "0.3.4"
+  },
+  "pdfmux_commit": "5662a29c634b24bf02f162e0d18ced9ecf8f0fd4",
+  "methods": {
+    "tableproof": "Local deterministic geometry auditor; optional vision not enabled.",
+    "token_multiset_control": "Our simple control; not an implementation of pdfmux.",
+    "structural_validity_control": "Our grid coverage control; no source comparison.",
+    "pdfmux_numeric_literals": "Installed pinned upstream verify_extraction API; numeric literal signal enabled. A page review/fail is a flag; only pass/unverifiable pages with an unverifiable page map to abstention. The raw manifest remains available."
+  },
+  "limitations": [
+    "Tiny development set. It does not establish a general accuracy advantage.",
+    "Real library cases share one generated PDF. They are not independent real documents.",
+    "Synthetic cases share one layout family. No confidence intervals are justified.",
+    "Real-source cases share one public table and AI-assisted labels, not human gold.",
+    "Abstentions and execution errors stay in recall and false-positive-rate denominators.",
+    "Rates count document flags, not whether every erroneous cell was localized.",
+    "No VLM inference or model accuracy claim forms part of this run.",
+    "Method statuses differ. A flag does not establish a correct error diagnosis.",
+    "Review burden includes both review and uncertain, unlike the flag precision measure.",
+    "TableProof gets Docling JSON geometry. pdfmux gets its supported page Markdown."
+  ],
+  "fixture_manifest_sha256": {
+    "fixtures/docling_5136/table2-7.20.0.manifest.json": "83fa627445b4426b0e2ccd3c537064f45de0f1404dfcaccc5f8b401fa53ca2c4",
+    "fixtures/docling_5136/table2-7.24.2.manifest.json": "76a88d471935488a8f78354b7658c3df3d11128d9b2013373ecd7c57659a894d",
+    "fixtures/docling_5198/affected.manifest.json": "3fc37fcbbb15eda1247cb096115ac2d59f47d209b41ea98ddca3b29d21a989a8",
+    "fixtures/docling_5198/fixed.manifest.json": "2efe63303062c1ca6539b0d434b3996acf5baa53499fce3a0aa77a5c4dc73bed",
+    "fixtures/synthetic/clean-empty-cell.manifest.json": "9b224df628be7f757d13f843b369f25e5733816cc349831ae7101d219cbab879",
+    "fixtures/synthetic/clean-repeated-value.manifest.json": "091748a1ed6670a475f921b3583669308d217a7acf74fbc3142bd06d4d00c2fb",
+    "fixtures/synthetic/clean.manifest.json": "d4ff3fa24f85becbc69cc92cce38d95bcaa2ae9cf0072092413ab5f8aa518327",
+    "fixtures/synthetic/column-value-swap.manifest.json": "da2ba0e0d524e496055645248600aa112d745d2073c67494b6ec0992473fc35c",
+    "fixtures/synthetic/decimal-loss.manifest.json": "2423bef5b99e1488cce217400b2c4bfa9183afe08a0fbec335750ec7aae591d7",
+    "fixtures/synthetic/empty-cell.manifest.json": "5801039f1809c053721cbd987ea3b998a9d023a5833108a4621812f177da4276",
+    "fixtures/synthetic/header-swap.manifest.json": "06fa7376ca5995fd882a4ec67f9ca05578d59719ffe813093a7a1dc5474c3cc9",
+    "fixtures/synthetic/missing-geometry.manifest.json": "86defc4e4067d110b0cba243045da7f6cc776c921584042de20e0c0708d06e67",
+    "fixtures/synthetic/missing-table.manifest.json": "a9347409bff24c8de96a93834a59783db91874db6032cd4267de2b1a11a36f5f",
+    "fixtures/synthetic/row-label-swap.manifest.json": "1792e28c6560e3c580e3c43540472cd9f2c1064ba95b9160d524d6a927932ac8",
+    "fixtures/synthetic/row-value-swap.manifest.json": "ec7781a2604c774890d1c259afb745dca1de6ba7a11c7e8fb93d1629b84bddbb",
+    "fixtures/synthetic/scan-only.manifest.json": "5689f2bc0b914ab4e310b9a637fcbe547b11b330a87bcdbdba839d3d0ae132e8",
+    "fixtures/synthetic/spanning-header.manifest.json": "c86b35fbe71a07618b0abd08b44cae758d5ad90e9b2214f1ea9fc12c7f48a9b0",
+    "fixtures/synthetic/unit-change.manifest.json": "fc6e255a9133c15d48ce9e5757ff5c8a9c2838bcf425e171577e1bbbf67d2fe6"
+  },
+  "engine_source_sha256": {
+    "src/table_proof/__init__.py": "b0d8c4669fc4ed36f582feb9ec13e087060c02b9e7d4b8a84cbc78ed4ae50bc4",
+    "src/table_proof/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/table_proof/api.py": "08578ffe490268ee0e0f712537532dd4fa0daf6550008a02f55bb9a517c6833a",
+    "src/table_proof/auditor.py": "a476dc007f8adc8904abb292f83b4b78f6d8bdc052794d359e507def2a3d13ea",
+    "src/table_proof/cli.py": "ffe80f1b514718edbe37d2369aa2e1a1c7c79e3ccc931d4f3e05e6e86635872b",
+    "src/table_proof/docling.py": "d16bd9de3f46f1ff64c9bd6fd50ee200297a83d3d95a660d1c0178b0c65157a7",
+    "src/table_proof/models.py": "217f6b5b7eff3486221f980a1b0715e55b82ea49b271ebd70442f53e1992545b",
+    "src/table_proof/pdf.py": "a048793779b76e1f723ac744994c08b105d569a4cbab5caf7b0047c0c1b4b3f6",
+    "src/table_proof/report.py": "dfa1f300467c33ca0145c2355df7a47348f565cd4b46c82229678ac3e3e6a5df",
+    "src/table_proof/vision.py": "b58c95f627067492ef1faf55cd7725457145e43fdaea2e8501ff2c6439f47a99"
+  },
+  "summary": {
+    "pdfmux_numeric_literals": {
+      "real_library_reproducer": {
+        "cases": 2,
+        "positive_cases": 1,
+        "negative_cases": 1,
+        "true_positive": 1,
+        "false_positive": 1,
+        "true_negative_determinate": 0,
+        "positive_not_flagged_including_abstentions_and_errors": 0,
+        "precision": 0.5,
+        "recall_all_positive_cases": 1.0,
+        "false_positive_rate_all_negative_cases": 1.0,
+        "abstentions": 0,
+        "abstention_rate": 0.0,
+        "execution_errors": 0,
+        "review_burden_count": 2,
+        "review_burden_rate": 1.0,
+        "handoff_burden_including_execution_errors": 2,
+        "handoff_burden_rate": 1.0
+      },
+      "real_source_pdf": {
+        "cases": 2,
+        "positive_cases": 2,
+        "negative_cases": 0,
+        "true_positive": 2,
+        "false_positive": 0,
+        "true_negative_determinate": 0,
+        "positive_not_flagged_including_abstentions_and_errors": 0,
+        "precision": 1.0,
+        "recall_all_positive_cases": 1.0,
+        "false_positive_rate_all_negative_cases": null,
+        "abstentions": 0,
+        "abstention_rate": 0.0,
+        "execution_errors": 0,
+        "review_burden_count": 2,
+        "review_burden_rate": 1.0,
+        "handoff_burden_including_execution_errors": 2,
+        "handoff_burden_rate": 1.0
+      },
+      "synthetic_control": {
+        "cases": 14,
+        "positive_cases": 8,
+        "negative_cases": 6,
+        "true_positive": 3,
+        "false_positive": 0,
+        "true_negative_determinate": 5,
+        "positive_not_flagged_including_abstentions_and_errors": 5,
+        "precision": 1.0,
+        "recall_all_positive_cases": 0.375,
+        "false_positive_rate_all_negative_cases": 0.0,
+        "abstentions": 1,
+        "abstention_rate": 0.07142857142857142,
+        "execution_errors": 0,
+        "review_burden_count": 4,
+        "review_burden_rate": 0.2857142857142857,
+        "handoff_burden_including_execution_errors": 4,
+        "handoff_burden_rate": 0.2857142857142857
+      }
+    },
+    "structural_validity_control": {
+      "real_library_reproducer": {
+        "cases": 2,
+        "positive_cases": 1,
+        "negative_cases": 1,
+        "true_positive": 0,
+        "false_positive": 0,
+        "true_negative_determinate": 1,
+        "positive_not_flagged_including_abstentions_and_errors": 1,
+        "precision": null,
+        "recall_all_positive_cases": 0.0,
+        "false_positive_rate_all_negative_cases": 0.0,
+        "abstentions": 0,
+        "abstention_rate": 0.0,
+        "execution_errors": 0,
+        "review_burden_count": 0,
+        "review_burden_rate": 0.0,
+        "handoff_burden_including_execution_errors": 0,
+        "handoff_burden_rate": 0.0
+      },
+      "real_source_pdf": {
+        "cases": 2,
+        "positive_cases": 2,
+        "negative_cases": 0,
+        "true_positive": 0,
+        "false_positive": 0,
+        "true_negative_determinate": 0,
+        "positive_not_flagged_including_abstentions_and_errors": 2,
+        "precision": null,
+        "recall_all_positive_cases": 0.0,
+        "false_positive_rate_all_negative_cases": null,
+        "abstentions": 0,
+        "abstention_rate": 0.0,
+        "execution_errors": 0,
+        "review_burden_count": 0,
+        "review_burden_rate": 0.0,
+        "handoff_burden_including_execution_errors": 0,
+        "handoff_burden_rate": 0.0
+      },
+      "synthetic_control": {
+        "cases": 14,
+        "positive_cases": 8,
+        "negative_cases": 6,
+        "true_positive": 1,
+        "false_positive": 0,
+        "true_negative_determinate": 6,
+        "positive_not_flagged_including_abstentions_and_errors": 7,
+        "precision": 1.0,
+        "recall_all_positive_cases": 0.125,
+        "false_positive_rate_all_negative_cases": 0.0,
+        "abstentions": 0,
+        "abstention_rate": 0.0,
+        "execution_errors": 0,
+        "review_burden_count": 1,
+        "review_burden_rate": 0.07142857142857142,
+        "handoff_burden_including_execution_errors": 1,
+        "handoff_burden_rate": 0.07142857142857142
+      }
+    },
+    "tableproof": {
+      "real_library_reproducer": {
+        "cases": 2,
+        "positive_cases": 1,
+        "negative_cases": 1,
+        "true_positive": 1,
+        "false_positive": 0,
+        "true_negative_determinate": 1,
+        "positive_not_flagged_including_abstentions_and_errors": 0,
+        "precision": 1.0,
+        "recall_all_positive_cases": 1.0,
+        "false_positive_rate_all_negative_cases": 0.0,
+        "abstentions": 0,
+        "abstention_rate": 0.0,
+        "execution_errors": 0,
+        "review_burden_count": 1,
+        "review_burden_rate": 0.5,
+        "handoff_burden_including_execution_errors": 1,
+        "handoff_burden_rate": 0.5
+      },
+      "real_source_pdf": {
+        "cases": 2,
+        "positive_cases": 2,
+        "negative_cases": 0,
+        "true_positive": 1,
+        "false_positive": 0,
+        "true_negative_determinate": 0,
+        "positive_not_flagged_including_abstentions_and_errors": 1,
+        "precision": 1.0,
+        "recall_all_positive_cases": 0.5,
+        "false_positive_rate_all_negative_cases": null,
+        "abstentions": 1,
+        "abstention_rate": 0.5,
+        "execution_errors": 0,
+        "review_burden_count": 2,
+        "review_burden_rate": 1.0,
+        "handoff_burden_including_execution_errors": 2,
+        "handoff_burden_rate": 1.0
+      },
+      "synthetic_control": {
+        "cases": 14,
+        "positive_cases": 8,
+        "negative_cases": 6,
+        "true_positive": 7,
+        "false_positive": 0,
+        "true_negative_determinate": 4,
+        "positive_not_flagged_including_abstentions_and_errors": 1,
+        "precision": 1.0,
+        "recall_all_positive_cases": 0.875,
+        "false_positive_rate_all_negative_cases": 0.0,
+        "abstentions": 3,
+        "abstention_rate": 0.21428571428571427,
+        "execution_errors": 0,
+        "review_burden_count": 10,
+        "review_burden_rate": 0.7142857142857143,
+        "handoff_burden_including_execution_errors": 10,
+        "handoff_burden_rate": 0.7142857142857143
+      }
+    },
+    "token_multiset_control": {
+      "real_library_reproducer": {
+        "cases": 2,
+        "positive_cases": 1,
+        "negative_cases": 1,
+        "true_positive": 0,
+        "false_positive": 0,
+        "true_negative_determinate": 1,
+        "positive_not_flagged_including_abstentions_and_errors": 1,
+        "precision": null,
+        "recall_all_positive_cases": 0.0,
+        "false_positive_rate_all_negative_cases": 0.0,
+        "abstentions": 0,
+        "abstention_rate": 0.0,
+        "execution_errors": 0,
+        "review_burden_count": 0,
+        "review_burden_rate": 0.0,
+        "handoff_burden_including_execution_errors": 0,
+        "handoff_burden_rate": 0.0
+      },
+      "real_source_pdf": {
+        "cases": 2,
+        "positive_cases": 2,
+        "negative_cases": 0,
+        "true_positive": 2,
+        "false_positive": 0,
+        "true_negative_determinate": 0,
+        "positive_not_flagged_including_abstentions_and_errors": 0,
+        "precision": 1.0,
+        "recall_all_positive_cases": 1.0,
+        "false_positive_rate_all_negative_cases": null,
+        "abstentions": 0,
+        "abstention_rate": 0.0,
+        "execution_errors": 0,
+        "review_burden_count": 2,
+        "review_burden_rate": 1.0,
+        "handoff_burden_including_execution_errors": 2,
+        "handoff_burden_rate": 1.0
+      },
+      "synthetic_control": {
+        "cases": 14,
+        "positive_cases": 8,
+        "negative_cases": 6,
+        "true_positive": 4,
+        "false_positive": 0,
+        "true_negative_determinate": 5,
+        "positive_not_flagged_including_abstentions_and_errors": 4,
+        "precision": 1.0,
+        "recall_all_positive_cases": 0.5,
+        "false_positive_rate_all_negative_cases": 0.0,
+        "abstentions": 1,
+        "abstention_rate": 0.07142857142857142,
+        "execution_errors": 0,
+        "review_burden_count": 5,
+        "review_burden_rate": 0.35714285714285715,
+        "handoff_burden_including_execution_errors": 5,
+        "handoff_burden_rate": 0.35714285714285715
+      }
+    }
+  },
+  "results": [
+    {
+      "case_id": "docling-5136-parse-7.20.0",
+      "stratum": "real_source_pdf",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "uncertain",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "table2.pdf",
+        "source_sha256": "fc4c48b8ef82e85be9955159e42c1fcc81a9f597dd0d0075b8ab81f856116303",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "uncertain",
+            "checked_cells": 63,
+            "total_cells": 64,
+            "findings": [
+              {
+                "code": "source_assignment_ambiguous",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/39",
+                "message": "Source words cross a boundary, overlap, or have unreadable text.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": {
+                  "x0": 518.9704516530037,
+                  "top": 165.3354360461235,
+                  "x1": 537.6007053256035,
+                  "bottom": 174.84243267774582
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "docling-5136-parse-7.20.0",
+      "stratum": "real_source_pdf",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "review",
+      "missing": {
+        "an.gambiaes.l": 1,
+        "an.funestus": 1,
+        "culexspp": 1,
+        "mansoniaspp": 1,
+        "aedesspp": 1,
+        "otherspp": 1,
+        "0.65a": 1,
+        "0.55a": 1,
+        "2.28a": 1,
+        "0.25a": 2,
+        "0.10a": 1,
+        "0.43a": 2,
+        "1.30b": 1,
+        "0.53a": 1,
+        "1.85a": 1,
+        "0.53b": 1,
+        "0.15ab": 1,
+        "nylonstrips": 2,
+        "1.43b": 1,
+        "1.15b": 1,
+        "2.98b": 1,
+        "0.55b": 2,
+        "0.13a": 1,
+        "0.58b": 1,
+        "1.05b": 1,
+        "0.58a": 2,
+        "2.48a": 1,
+        "0.33ab": 1,
+        "0.38a": 1,
+        "1.03b": 2,
+        "1.73c": 1,
+        "1.88a": 1,
+        "0.60b": 1,
+        "0.38b": 1,
+        "0.40a": 1,
+        "2.15a": 1,
+        "0.08a": 1,
+        "0.83c": 1,
+        "totalmosquitocatches": 1
+      },
+      "extra": {
+        "an": 2,
+        "gambiae": 1,
+        "s.l": 1,
+        "funestus": 1,
+        "culex": 1,
+        "spp": 4,
+        "mansonia": 1,
+        "aedes": 1,
+        "other": 1,
+        "0.65": 1,
+        "a": 18,
+        "0.55": 3,
+        "2.28": 1,
+        "0.25": 2,
+        "0.10": 1,
+        "0.43": 2,
+        "1.30": 1,
+        "b": 13,
+        "0.53": 2,
+        "1.85": 1,
+        "0.15": 1,
+        "ab": 2,
+        "nylon": 2,
+        "strips": 2,
+        "1.43": 1,
+        "1.15": 1,
+        "2.98": 1,
+        "0.13": 1,
+        "0.58": 3,
+        "1.05": 1,
+        "2.48": 1,
+        "0.33": 1,
+        "0.38": 2,
+        "1.03": 2,
+        "1.73": 1,
+        "c": 2,
+        "1.88": 1,
+        "0.60": 1,
+        "0.40": 1,
+        "2.15": 1,
+        "0.08": 1,
+        "0.83": 1,
+        "total": 1,
+        "mosquito": 1,
+        "catches": 1
+      }
+    },
+    {
+      "case_id": "docling-5136-parse-7.20.0",
+      "stratum": "real_source_pdf",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "docling-5136-parse-7.20.0",
+      "stratum": "real_source_pdf",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "review",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:fc4c48b8ef82e85be9955159e42c1fcc81a9f597dd0d0075b8ab81f856116303",
+        "extraction_sha256": "sha256:e7baa6cc3ae86dbb1d015a4244847c082b72d77f2a9ebc9a5b91b97990b8546f",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "REVIEW",
+        "confidence": 0.9,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [
+          1
+        ],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: REVIEW; 1 page(s) need review; overall confidence 90%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 695,
+            "extracted_chars": 700,
+            "coverage": 1.0,
+            "confidence": 0.9,
+            "alignment": 0.2837,
+            "hallucination_risk": 0.4872,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "review",
+            "flags": [
+              "low_alignment",
+              "hallucination_risk"
+            ],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "docling-5136-parse-7.24.2",
+      "stratum": "real_source_pdf",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "table2.pdf",
+        "source_sha256": "fc4c48b8ef82e85be9955159e42c1fcc81a9f597dd0d0075b8ab81f856116303",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "review",
+            "checked_cells": 62,
+            "total_cells": 64,
+            "findings": [
+              {
+                "code": "missing_cell_text",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/2",
+                "message": "Source words are absent from the empty cell.",
+                "expected_text": "s.l. An. gambiae",
+                "observed_text": "",
+                "bbox": {
+                  "x0": 188.6409230530262,
+                  "top": 106.5909512154758,
+                  "x1": 245.38211598992348,
+                  "bottom": 116.15976957976818
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "missing_cell_text",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/3",
+                "message": "Source words are absent from the empty cell.",
+                "expected_text": "An. funestus",
+                "observed_text": "",
+                "bbox": {
+                  "x0": 263.7056429684162,
+                  "top": 106.97937726601958,
+                  "x1": 304.4326841831207,
+                  "bottom": 116.16005684435368
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "source_assignment_ambiguous",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/39",
+                "message": "Source words cross a boundary, overlap, or have unreadable text.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": {
+                  "x0": 518.9704516530037,
+                  "top": 165.3354360461235,
+                  "x1": 537.6007053256035,
+                  "bottom": 174.84243267774582
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "missing_cell_text",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/4",
+                "message": "Source words are absent from the empty cell.",
+                "expected_text": "spp. Culex",
+                "observed_text": "",
+                "bbox": {
+                  "x0": 323.7288498878479,
+                  "top": 106.96400595083833,
+                  "x1": 361.42017900943756,
+                  "bottom": 116.24672740697861
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "missing_cell_text",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/5",
+                "message": "Source words are absent from the empty cell.",
+                "expected_text": "spp. Mansonia",
+                "observed_text": "",
+                "bbox": {
+                  "x0": 379.7632968425751,
+                  "top": 107.12353133410215,
+                  "x1": 431.03870034217834,
+                  "bottom": 116.13985434174538
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "text_normalization_uncertain",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/56",
+                "message": "Text differs in token boundaries, bracket order, glyphs, or hyphens.",
+                "expected_text": "Total mosquito catches ( ) n",
+                "observed_text": "Total mosquito catches (n)",
+                "bbox": {
+                  "x0": 49.77879520505667,
+                  "top": 203.02637255191803,
+                  "x1": 140.55642426013947,
+                  "bottom": 212.6164276599884
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "missing_cell_text",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/6",
+                "message": "Source words are absent from the empty cell.",
+                "expected_text": "spp. Aedes",
+                "observed_text": "",
+                "bbox": {
+                  "x0": 450.1698189973831,
+                  "top": 107.53196749091148,
+                  "x1": 488.26205253601074,
+                  "bottom": 116.31422217190266
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "missing_cell_text",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/7",
+                "message": "Source words are absent from the empty cell.",
+                "expected_text": "Other spp.",
+                "observed_text": "",
+                "bbox": {
+                  "x0": 505.8090263605118,
+                  "top": 107.4297075048089,
+                  "x1": 542.6521068811417,
+                  "bottom": 116.32405832409859
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "docling-5136-parse-7.24.2",
+      "stratum": "real_source_pdf",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "review",
+      "missing": {
+        "an.gambiaes.l": 1,
+        "an.funestus": 1,
+        "culexspp": 1,
+        "mansoniaspp": 1,
+        "aedesspp": 1,
+        "otherspp": 1,
+        "0.65a": 1,
+        "0.55a": 1,
+        "2.28a": 1,
+        "0.25a": 2,
+        "0.10a": 1,
+        "0.43a": 2,
+        "1.30b": 1,
+        "0.53a": 1,
+        "1.85a": 1,
+        "0.53b": 1,
+        "0.15ab": 1,
+        "nylonstrips": 2,
+        "1.43b": 1,
+        "1.15b": 1,
+        "2.98b": 1,
+        "0.55b": 2,
+        "0.13a": 1,
+        "0.58b": 1,
+        "1.05b": 1,
+        "0.58a": 2,
+        "2.48a": 1,
+        "0.33ab": 1,
+        "0.38a": 1,
+        "1.03b": 2,
+        "1.73c": 1,
+        "1.88a": 1,
+        "0.60b": 1,
+        "0.38b": 1,
+        "0.40a": 1,
+        "2.15a": 1,
+        "0.08a": 1,
+        "0.83c": 1,
+        "totalmosquitocatches": 1
+      },
+      "extra": {
+        "0.65": 1,
+        "a": 19,
+        "0.55": 3,
+        "2.28": 1,
+        "0.25": 2,
+        "0.10": 1,
+        "0.43": 2,
+        "1.30": 1,
+        "b": 13,
+        "0.53": 2,
+        "1.85": 1,
+        "0.15": 1,
+        "ab": 2,
+        "nylon": 2,
+        "strips": 2,
+        "1.43": 1,
+        "1.15": 1,
+        "2.98": 1,
+        "0.13": 1,
+        "0.58": 3,
+        "1.05": 1,
+        "2.48": 1,
+        "0.33": 1,
+        "0.38": 2,
+        "1.03": 2,
+        "1.73": 1,
+        "c": 2,
+        "1.88": 1,
+        "0.60": 1,
+        "0.40": 1,
+        "2.15": 1,
+        "0.08": 1,
+        "0.83": 1,
+        "total": 1,
+        "mosquito": 1,
+        "catches": 1
+      }
+    },
+    {
+      "case_id": "docling-5136-parse-7.24.2",
+      "stratum": "real_source_pdf",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "docling-5136-parse-7.24.2",
+      "stratum": "real_source_pdf",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "review",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:fc4c48b8ef82e85be9955159e42c1fcc81a9f597dd0d0075b8ab81f856116303",
+        "extraction_sha256": "sha256:e1282bf221c6feba90fb51fb69fa7b0edfe6937e803c40dd9f56074cbaccd7fd",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "REVIEW",
+        "confidence": 0.9,
+        "coverage": 0.905,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [
+          1
+        ],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: REVIEW; 1 page(s) need review; overall confidence 90%, coverage 90% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 695,
+            "extracted_chars": 629,
+            "coverage": 0.905,
+            "confidence": 0.9,
+            "alignment": 0.2199,
+            "hallucination_risk": 0.5507,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "review",
+            "flags": [
+              "low_alignment",
+              "hallucination_risk"
+            ],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "docling-5198-affected",
+      "stratum": "real_library_reproducer",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "source.pdf",
+        "source_sha256": "9289b31052fb4d60a06756879a9f33eadae84ac8ffb7716fe93ee57981454f44",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "no_findings",
+            "checked_cells": 2,
+            "total_cells": 2,
+            "findings": []
+          },
+          {
+            "table_id": "#/tables/1",
+            "page": 2,
+            "status": "review",
+            "checked_cells": 4,
+            "total_cells": 4,
+            "findings": [
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/1",
+                "page": 2,
+                "cell_id": "#/tables/1/cells/0",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "BBB",
+                "observed_text": "CCC",
+                "bbox": {
+                  "x0": 72.0,
+                  "top": 96.0,
+                  "x1": 228.0,
+                  "bottom": 130.0
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/1",
+                "page": 2,
+                "cell_id": "#/tables/1/cells/2",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "CCC",
+                "observed_text": "BBB",
+                "bbox": {
+                  "x0": 72.0,
+                  "top": 130.0,
+                  "x1": 228.0,
+                  "bottom": 164.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "docling-5198-affected",
+      "stratum": "real_library_reproducer",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "docling-5198-affected",
+      "stratum": "real_library_reproducer",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "docling-5198-affected",
+      "stratum": "real_library_reproducer",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "review",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:9289b31052fb4d60a06756879a9f33eadae84ac8ffb7716fe93ee57981454f44",
+        "extraction_sha256": "sha256:c8f3a07b5f2213da4c5d4d4c8bfdd33b4e2174e5f3f1d3c2be1c42f853816181",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 2,
+        "page_aligned": true,
+        "verdict": "REVIEW",
+        "confidence": 0.4156,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [
+          2
+        ],
+        "review_pages": [
+          2
+        ],
+        "unverifiable_pages": [
+          1
+        ],
+        "summary": "docling-json-materialized: REVIEW; 1 page(s) need review; 1 low-confidence page(s); 1 unverifiable page(s) (source has no text layer); overall confidence 42%, coverage 100% across 2 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 11,
+            "extracted_chars": 31,
+            "coverage": 1.0,
+            "confidence": 0.29999999999999993,
+            "alignment": 0.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "unverifiable",
+            "flags": [
+              "source_no_text_layer"
+            ],
+            "numeric_literal_findings": [],
+            "page": 1
+          },
+          {
+            "page_num": 1,
+            "source_chars": 37,
+            "extracted_chars": 49,
+            "coverage": 1.0,
+            "confidence": 0.45,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "review",
+            "flags": [
+              "low_confidence"
+            ],
+            "numeric_literal_findings": [],
+            "page": 2
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "docling-5198-fixed",
+      "stratum": "real_library_reproducer",
+      "method": "tableproof",
+      "has_error": false,
+      "status": "no_findings",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "source.pdf",
+        "source_sha256": "9289b31052fb4d60a06756879a9f33eadae84ac8ffb7716fe93ee57981454f44",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "no_findings",
+            "checked_cells": 2,
+            "total_cells": 2,
+            "findings": []
+          },
+          {
+            "table_id": "#/tables/1",
+            "page": 2,
+            "status": "no_findings",
+            "checked_cells": 4,
+            "total_cells": 4,
+            "findings": []
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "docling-5198-fixed",
+      "stratum": "real_library_reproducer",
+      "method": "token_multiset_control",
+      "has_error": false,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "docling-5198-fixed",
+      "stratum": "real_library_reproducer",
+      "method": "structural_validity_control",
+      "has_error": false,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "docling-5198-fixed",
+      "stratum": "real_library_reproducer",
+      "method": "pdfmux_numeric_literals",
+      "has_error": false,
+      "status": "review",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:9289b31052fb4d60a06756879a9f33eadae84ac8ffb7716fe93ee57981454f44",
+        "extraction_sha256": "sha256:d65c63f7590ca1136d5b4c0fccf31f0776183d0d9d9f386571feb24f7e93224b",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 2,
+        "page_aligned": true,
+        "verdict": "REVIEW",
+        "confidence": 0.4156,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [
+          2
+        ],
+        "review_pages": [
+          2
+        ],
+        "unverifiable_pages": [
+          1
+        ],
+        "summary": "docling-json-materialized: REVIEW; 1 page(s) need review; 1 low-confidence page(s); 1 unverifiable page(s) (source has no text layer); overall confidence 42%, coverage 100% across 2 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 11,
+            "extracted_chars": 31,
+            "coverage": 1.0,
+            "confidence": 0.29999999999999993,
+            "alignment": 0.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "unverifiable",
+            "flags": [
+              "source_no_text_layer"
+            ],
+            "numeric_literal_findings": [],
+            "page": 1
+          },
+          {
+            "page_num": 1,
+            "source_chars": 37,
+            "extracted_chars": 49,
+            "coverage": 1.0,
+            "confidence": 0.45,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "review",
+            "flags": [
+              "low_confidence"
+            ],
+            "numeric_literal_findings": [],
+            "page": 2
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-clean-empty-cell",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": false,
+      "status": "no_findings",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "clean-empty-cell.pdf",
+        "source_sha256": "8c559ab109b38d33a040e4c89bd31c9fff59084a9fde2d3a2b9c5703cc3a0e23",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "no_findings",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": []
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-clean-empty-cell",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": false,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-clean-empty-cell",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": false,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-clean-empty-cell",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": false,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:8c559ab109b38d33a040e4c89bd31c9fff59084a9fde2d3a2b9c5703cc3a0e23",
+        "extraction_sha256": "sha256:0a0c5d595240a78eacf42eb4925621c00e64fc8a00beb83870476ddf183ac4d4",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 90,
+            "extracted_chars": 120,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-clean-repeated-value",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": false,
+      "status": "no_findings",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "clean-repeated-value.pdf",
+        "source_sha256": "73c39afdb098caf4e80cf78f2de001cda805b174b387cfed7a1724ae83ccb9e4",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "no_findings",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": []
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-clean-repeated-value",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": false,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-clean-repeated-value",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": false,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-clean-repeated-value",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": false,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:73c39afdb098caf4e80cf78f2de001cda805b174b387cfed7a1724ae83ccb9e4",
+        "extraction_sha256": "sha256:7a518c0ecca18ff8efb0145d857694f4f457ce89164d09e23bc9ea09bb7de033",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 124,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-clean",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": false,
+      "status": "no_findings",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "clean.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "no_findings",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": []
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-clean",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": false,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-clean",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": false,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-clean",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": false,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:6f41fe9160ab78a1ebd5a965b0bb4876bc665fe20c8e387e26035562f9d99894",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 124,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-column-value-swap",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "column-value-swap.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "review",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/4",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "12.5",
+                "observed_text": "3.0",
+                "bbox": {
+                  "x0": 228.0,
+                  "top": 130.0,
+                  "x1": 384.0,
+                  "bottom": 164.0
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/5",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "3.0",
+                "observed_text": "12.5",
+                "bbox": {
+                  "x0": 384.0,
+                  "top": 130.0,
+                  "x1": 540.0,
+                  "bottom": 164.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-column-value-swap",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-column-value-swap",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-column-value-swap",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:2fcb5dea04e0dad3bf2062af7381cd676b4133a01738945bd8deeb47d78559d8",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 124,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-decimal-loss",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "decimal-loss.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "review",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/4",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "12.5",
+                "observed_text": "125",
+                "bbox": {
+                  "x0": 228.0,
+                  "top": 130.0,
+                  "x1": 384.0,
+                  "bottom": 164.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-decimal-loss",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "review",
+      "missing": {
+        "12.5": 1
+      },
+      "extra": {
+        "125": 1
+      }
+    },
+    {
+      "case_id": "synthetic-decimal-loss",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-decimal-loss",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "review",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:89725ee5df2bd91cd3460cf6c44242b4c237c33217ab1db3ea5649f1f10b3468",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "REVIEW",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [
+          1
+        ],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: REVIEW; 1 page(s) need review; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 123,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 0.9091,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "review",
+            "flags": [
+              "numeric_literal_review"
+            ],
+            "numeric_literal_findings": [
+              {
+                "literal": "12.5",
+                "normalized": "12.5",
+                "source_count": 1,
+                "extracted_count": 0
+              }
+            ],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-empty-cell",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "empty-cell.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "review",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "missing_cell_text",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/7",
+                "message": "Source words are absent from the empty cell.",
+                "expected_text": "20.0",
+                "observed_text": "",
+                "bbox": {
+                  "x0": 228.0,
+                  "top": 164.0,
+                  "x1": 384.0,
+                  "bottom": 198.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-empty-cell",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "review",
+      "missing": {
+        "20.0": 1
+      },
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-empty-cell",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-empty-cell",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "review",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:0a0c5d595240a78eacf42eb4925621c00e64fc8a00beb83870476ddf183ac4d4",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "REVIEW",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [
+          1
+        ],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: REVIEW; 1 page(s) need review; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 120,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 0.9091,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "review",
+            "flags": [
+              "numeric_literal_review"
+            ],
+            "numeric_literal_findings": [
+              {
+                "literal": "20.0",
+                "normalized": "20",
+                "source_count": 1,
+                "extracted_count": 0
+              }
+            ],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-header-swap",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "header-swap.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "review",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/1",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "Dose (mg)",
+                "observed_text": "Volume (ml)",
+                "bbox": {
+                  "x0": 228.0,
+                  "top": 96.0,
+                  "x1": 384.0,
+                  "bottom": 130.0
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/2",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "Volume (ml)",
+                "observed_text": "Dose (mg)",
+                "bbox": {
+                  "x0": 384.0,
+                  "top": 96.0,
+                  "x1": 540.0,
+                  "bottom": 130.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-header-swap",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-header-swap",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-header-swap",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:56291be681eb3914d041be6f90d5098e7561234a23f774d896c2914ca03ca016",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 124,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-missing-geometry",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": false,
+      "status": "uncertain",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "missing-geometry.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "uncertain",
+            "checked_cells": 0,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "table_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": null,
+                "message": "The table has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "table_source_text_unavailable",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": null,
+                "message": "The table region has no source words. Its content is unknown.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/0",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/1",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/10",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/11",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/2",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/3",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/4",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/5",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/6",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/7",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/8",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              },
+              {
+                "code": "cell_bbox_missing",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/9",
+                "message": "The cell has no source box.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": null,
+                "evidence": "table_structure"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-missing-geometry",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": false,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-missing-geometry",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": false,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-missing-geometry",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": false,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:6f41fe9160ab78a1ebd5a965b0bb4876bc665fe20c8e387e26035562f9d99894",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 124,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-missing-table",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "uncertain",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "missing-table.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document.",
+          "The extraction contains no tables. Coverage is unknown."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-missing-table",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "review",
+      "missing": {
+        "sample": 1,
+        "dose": 1,
+        "mg": 1,
+        "volume": 1,
+        "ml": 1,
+        "alpha": 1,
+        "12.5": 1,
+        "3.0": 1,
+        "beta": 1,
+        "20.0": 1,
+        "4.0": 1,
+        "gamma": 1,
+        "30.0": 1,
+        "5.0": 1
+      },
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-missing-table",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "review",
+      "problems": [
+        "No tables supplied"
+      ]
+    },
+    {
+      "case_id": "synthetic-missing-table",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "review",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": false,
+        "verdict": "REVIEW",
+        "confidence": 0.0,
+        "coverage": 0.0,
+        "silent_drops": [],
+        "low_confidence_pages": [
+          1
+        ],
+        "review_pages": [
+          1
+        ],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: REVIEW; 1 page(s) need review; 1 low-confidence page(s); overall confidence 0%, coverage 0% across 1 page(s); extraction was not page-segmented — per-page silent-drop detection unavailable.",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 0,
+            "coverage": 0.0,
+            "confidence": 0.0,
+            "alignment": 0.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "review",
+            "flags": [
+              "unsegmented_extraction",
+              "low_alignment"
+            ],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-row-label-swap",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "row-label-swap.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "review",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/3",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "Alpha",
+                "observed_text": "Beta",
+                "bbox": {
+                  "x0": 72.0,
+                  "top": 130.0,
+                  "x1": 228.0,
+                  "bottom": 164.0
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/6",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "Beta",
+                "observed_text": "Alpha",
+                "bbox": {
+                  "x0": 72.0,
+                  "top": 164.0,
+                  "x1": 228.0,
+                  "bottom": 198.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-row-label-swap",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-row-label-swap",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-row-label-swap",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:996f505d912388c7a2edd1ad3bfb6fa5dffbafa7a1dad88a66d3f43d43b4ebd3",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 124,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-row-value-swap",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "row-value-swap.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "review",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/4",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "12.5",
+                "observed_text": "20.0",
+                "bbox": {
+                  "x0": 228.0,
+                  "top": 130.0,
+                  "x1": 384.0,
+                  "bottom": 164.0
+                },
+                "evidence": "pdf_text_geometry"
+              },
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/7",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "20.0",
+                "observed_text": "12.5",
+                "bbox": {
+                  "x0": 228.0,
+                  "top": 164.0,
+                  "x1": 384.0,
+                  "bottom": 198.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-row-value-swap",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-row-value-swap",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-row-value-swap",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:4dbfae9cfa8c5dd22d81c75024372661349fb3e12961bc0f31f4e817c0b038d1",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 124,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 1.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-scan-only",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": false,
+      "status": "uncertain",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "scan-only.pdf",
+        "source_sha256": "d5aa75d1426257ae29428782461fded2f242f5409d8d0f119528571d6fb6286d",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "uncertain",
+            "checked_cells": 0,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "source_text_unavailable",
+                "severity": "uncertain",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": null,
+                "message": "The page has no readable source words. OCR is outside this audit.",
+                "expected_text": null,
+                "observed_text": null,
+                "bbox": {
+                  "x0": 72.0,
+                  "top": 96.0,
+                  "x1": 540.0,
+                  "bottom": 232.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-scan-only",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": false,
+      "status": "uncertain",
+      "reason": "No digital source text"
+    },
+    {
+      "case_id": "synthetic-scan-only",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": false,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-scan-only",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": false,
+      "status": "uncertain",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:d5aa75d1426257ae29428782461fded2f242f5409d8d0f119528571d6fb6286d",
+        "extraction_sha256": "sha256:6f41fe9160ab78a1ebd5a965b0bb4876bc665fe20c8e387e26035562f9d99894",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "REVIEW",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [
+          1
+        ],
+        "summary": "docling-json-materialized: REVIEW; 1 unverifiable page(s) (source has no text layer); overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 0,
+            "extracted_chars": 124,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 0.0,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "unverifiable",
+            "flags": [
+              "source_no_text_layer"
+            ],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-spanning-header",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": false,
+      "status": "no_findings",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "spanning-header.pdf",
+        "source_sha256": "77872d3359ebd0a4796c819c9000d69303afc7cadc46bb0e005a355d3f60043b",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "no_findings",
+            "checked_cells": 11,
+            "total_cells": 11,
+            "findings": []
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-spanning-header",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": false,
+      "status": "no_findings",
+      "missing": {},
+      "extra": {}
+    },
+    {
+      "case_id": "synthetic-spanning-header",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": false,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-spanning-header",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": false,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:77872d3359ebd0a4796c819c9000d69303afc7cadc46bb0e005a355d3f60043b",
+        "extraction_sha256": "sha256:10126ed126865e67cef25e854c50a4282ea41b92a4b18f19d9f1a8e59dd17a46",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 99,
+            "extracted_chars": 125,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 0.9167,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-unit-change",
+      "stratum": "synthetic_control",
+      "method": "tableproof",
+      "has_error": true,
+      "status": "review",
+      "report": {
+        "schema_version": "1.0",
+        "engine_version": "0.1.0",
+        "source_name": "unit-change.pdf",
+        "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "tables": [
+          {
+            "table_id": "#/tables/0",
+            "page": 1,
+            "status": "review",
+            "checked_cells": 12,
+            "total_cells": 12,
+            "findings": [
+              {
+                "code": "cell_text_mismatch",
+                "severity": "error",
+                "table_id": "#/tables/0",
+                "page": 1,
+                "cell_id": "#/tables/0/cells/1",
+                "message": "Cell tokens differ from the source words.",
+                "expected_text": "Dose (mg)",
+                "observed_text": "Dose (g)",
+                "bbox": {
+                  "x0": 228.0,
+                  "top": 96.0,
+                  "x1": 384.0,
+                  "bottom": 130.0
+                },
+                "evidence": "pdf_text_geometry"
+              }
+            ]
+          }
+        ],
+        "limitations": [
+          "No findings means that the selected checks found no error. It does not prove accuracy.",
+          "The geometry path depends on digital PDF text and cell coordinates.",
+          "Scans, multi-page tables, and ambiguous evidence need human review.",
+          "The tool does not certify meaning, units, or the factual accuracy of a source document."
+        ]
+      }
+    },
+    {
+      "case_id": "synthetic-unit-change",
+      "stratum": "synthetic_control",
+      "method": "token_multiset_control",
+      "has_error": true,
+      "status": "review",
+      "missing": {
+        "mg": 1
+      },
+      "extra": {
+        "g": 1
+      }
+    },
+    {
+      "case_id": "synthetic-unit-change",
+      "stratum": "synthetic_control",
+      "method": "structural_validity_control",
+      "has_error": true,
+      "status": "no_findings",
+      "problems": []
+    },
+    {
+      "case_id": "synthetic-unit-change",
+      "stratum": "synthetic_control",
+      "method": "pdfmux_numeric_literals",
+      "has_error": true,
+      "status": "no_findings",
+      "manifest": {
+        "schema_version": "certify-anything/v1",
+        "source_sha256": "sha256:99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+        "extraction_sha256": "sha256:024138a33ffa9948d5b64b8a00a418b370298d7970d8b06c5366a06d4c265b0b",
+        "engine": "docling-json-materialized",
+        "tool": "pdfmux verify 1.8.7",
+        "page_count": 1,
+        "page_aligned": true,
+        "verdict": "PASS",
+        "confidence": 0.8,
+        "coverage": 1.0,
+        "silent_drops": [],
+        "low_confidence_pages": [],
+        "review_pages": [],
+        "unverifiable_pages": [],
+        "summary": "docling-json-materialized: PASS; overall confidence 80%, coverage 100% across 1 page(s).",
+        "pages": [
+          {
+            "page_num": 0,
+            "source_chars": 94,
+            "extracted_chars": 123,
+            "coverage": 1.0,
+            "confidence": 0.8,
+            "alignment": 0.9091,
+            "hallucination_risk": 0.0,
+            "silent_drop": false,
+            "table_integrity": true,
+            "heading_integrity": true,
+            "verdict": "pass",
+            "flags": [],
+            "numeric_literal_findings": [],
+            "page": 1
+          }
+        ],
+        "limitations": [
+          "Cannot verify content it cannot re-derive from the source PDF. Pages with no digital text layer (pure scans) are marked 'unverifiable' — pdfmux's cheap re-derivation reads no text there, so silent-drop and alignment cannot be judged without running full OCR on the source.",
+          "Requires the source PDF. A manifest cannot be produced from the extraction alone.",
+          "Alignment is lexical (content-token overlap), not semantic. A faithful paraphrase or translation would score as low alignment. Extraction engines are expected to transcribe, not rewrite, so this is the correct conservative bias for a certifier.",
+          "Adds latency: the source PDF is re-extracted once through pdfmux's fast pass to establish ground truth."
+        ]
+      }
+    }
+  ]
+}

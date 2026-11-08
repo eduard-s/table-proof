@@ -1,0 +1,17 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.11.0",
+  "name": "fixture",
+  "tables": [],
+  "groups": [],
+  "texts": [],
+  "pages": {
+    "1": {
+      "page_no": 1,
+      "size": {
+        "width": 612,
+        "height": 792
+      }
+    }
+  }
+}

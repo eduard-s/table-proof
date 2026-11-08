@@ -1,0 +1,19 @@
+{
+  "id": "synthetic-scan-only",
+  "stratum": "synthetic_control",
+  "source_pdf": "fixtures/synthetic/scan-only.pdf",
+  "source_sha256": "d5aa75d1426257ae29428782461fded2f242f5409d8d0f119528571d6fb6286d",
+  "extracted_json": "fixtures/synthetic/scan-only.json",
+  "extracted_sha256": "ed62fd8433d7a17b3507191e0b3bf931aa2001d94a6ad2ba2a3655b101ef9bb0",
+  "gold": {
+    "has_error": false,
+    "errors": []
+  },
+  "metadata": {
+    "fixture_license": "MIT",
+    "generator": "benchmarks/make_synthetic.py",
+    "expected_support": "uncertain",
+    "gold_source": "Declared fixture text and explicit mutations, not model output.",
+    "independence_note": "One generated layout family; cases are correlated."
+  }
+}

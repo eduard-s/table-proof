@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12', '3.13', '3.14']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: python -m pip install -e '.[dev]'
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Examine types
+        if: matrix.python-version == '3.12'
+        run: mypy src/table_proof
+      - name: Run tests
+        run: pytest --cov=table_proof --cov-report=term-missing --cov-report=xml
+      - name: Run the fixed fixture corpus
+        run: >-
+          python -m benchmarks.run
+          --methods tableproof token_multiset_control structural_validity_control
+          --output artifacts/benchmark.json
+      - name: Make distributions
+        run: |
+          python -m build
+          python -m twine check dist/*
+      - name: Install the wheel in a new environment
+        run: |
+          python -m venv .venv-wheel
+          .venv-wheel/bin/python -m pip install dist/*.whl
+          .venv-wheel/bin/python -m table_proof --version
+          .venv-wheel/bin/python scripts/wheel_smoke.py
+      - name: Keep test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-python-${{ matrix.python-version }}
+          path: |
+            coverage.xml
+            artifacts/
+            dist/

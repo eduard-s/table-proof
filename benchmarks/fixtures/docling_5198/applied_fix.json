@@ -1,0 +1,9 @@
+{
+  "source_url": "https://github.com/docling-project/docling-core/pull/986/files/bef3c28565c623537d0723b0d3d04f5af8d56c41",
+  "patch_commit": "bef3c28565c623537d0723b0d3d04f5af8d56c41",
+  "base_commit": "3e3be95e9de7472e78da2068ae2b281e4dd34611",
+  "unpatched_module_sha256": "bd66eea79aedbabcdce680743698e4271084882a91e46e643508612ac32978e9",
+  "patch_helper_sha256": "7f8af7f84ef6bd212d17879d9eb65e8441e8dd3045e69cdc55319a13cda9bd40",
+  "description": "Only PR986's rich-cell-reference hunk, applied to the same installed base commit.",
+  "patched_module_sha256": "2d70cc684f3869fbd8fd8f0b2a856a362a95e5b941efe29a407c430f38a9eefc"
+}

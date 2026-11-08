@@ -1,0 +1,36 @@
+{
+  "id": "synthetic-row-value-swap",
+  "stratum": "synthetic_control",
+  "source_pdf": "fixtures/synthetic/row-value-swap.pdf",
+  "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+  "extracted_json": "fixtures/synthetic/row-value-swap.json",
+  "extracted_sha256": "a90065a37667eb5dc81e1f5d740945ddd439e856e3faedd72eac029aa63a4566",
+  "gold": {
+    "has_error": true,
+    "errors": [
+      {
+        "table_index": 0,
+        "row": 1,
+        "col": 1,
+        "type": "row-value-swap",
+        "expected": "12.5",
+        "observed": "20.0"
+      },
+      {
+        "table_index": 0,
+        "row": 2,
+        "col": 1,
+        "type": "row-value-swap",
+        "expected": "20.0",
+        "observed": "12.5"
+      }
+    ]
+  },
+  "metadata": {
+    "fixture_license": "MIT",
+    "generator": "benchmarks/make_synthetic.py",
+    "expected_support": "supported",
+    "gold_source": "Declared fixture text and explicit mutations, not model output.",
+    "independence_note": "One generated layout family; cases are correlated."
+  }
+}

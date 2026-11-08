@@ -1,0 +1,28 @@
+{
+  "id": "synthetic-decimal-loss",
+  "stratum": "synthetic_control",
+  "source_pdf": "fixtures/synthetic/decimal-loss.pdf",
+  "source_sha256": "99a7677bf81e133109f1ab4d2c80100210369015d8eeb96ee1c05b12a05e19a9",
+  "extracted_json": "fixtures/synthetic/decimal-loss.json",
+  "extracted_sha256": "fc2a3c884b2881fee7e08757d7fb63eeed301560025cad477203d108832bff60",
+  "gold": {
+    "has_error": true,
+    "errors": [
+      {
+        "table_index": 0,
+        "row": 1,
+        "col": 1,
+        "type": "decimal-loss",
+        "expected": "12.5",
+        "observed": "125"
+      }
+    ]
+  },
+  "metadata": {
+    "fixture_license": "MIT",
+    "generator": "benchmarks/make_synthetic.py",
+    "expected_support": "supported",
+    "gold_source": "Declared fixture text and explicit mutations, not model output.",
+    "independence_note": "One generated layout family; cases are correlated."
+  }
+}

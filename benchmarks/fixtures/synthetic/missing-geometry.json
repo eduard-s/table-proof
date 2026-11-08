@@ -1,0 +1,165 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.11.0",
+  "name": "fixture",
+  "tables": [
+    {
+      "self_ref": "#/tables/0",
+      "label": "table",
+      "prov": [
+        {
+          "page_no": 1
+        }
+      ],
+      "data": {
+        "num_rows": 4,
+        "num_cols": 3,
+        "table_cells": [
+          {
+            "text": "Sample",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "column_header": true,
+            "row_header": true
+          },
+          {
+            "text": "Dose (mg)",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "column_header": true,
+            "row_header": false
+          },
+          {
+            "text": "Volume (ml)",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "column_header": true,
+            "row_header": false
+          },
+          {
+            "text": "Alpha",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "column_header": false,
+            "row_header": true
+          },
+          {
+            "text": "12.5",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "column_header": false,
+            "row_header": false
+          },
+          {
+            "text": "3.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "column_header": false,
+            "row_header": false
+          },
+          {
+            "text": "Beta",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "column_header": false,
+            "row_header": true
+          },
+          {
+            "text": "20.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "column_header": false,
+            "row_header": false
+          },
+          {
+            "text": "4.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "column_header": false,
+            "row_header": false
+          },
+          {
+            "text": "Gamma",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "column_header": false,
+            "row_header": true
+          },
+          {
+            "text": "30.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "column_header": false,
+            "row_header": false
+          },
+          {
+            "text": "5.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "column_header": false,
+            "row_header": false
+          }
+        ]
+      }
+    }
+  ],
+  "groups": [],
+  "texts": [],
+  "pages": {
+    "1": {
+      "page_no": 1,
+      "size": {
+        "width": 612,
+        "height": 792
+      }
+    }
+  }
+}

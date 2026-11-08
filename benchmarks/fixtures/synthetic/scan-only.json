@@ -1,0 +1,256 @@
+{
+  "schema_name": "DoclingDocument",
+  "version": "1.11.0",
+  "name": "fixture",
+  "tables": [
+    {
+      "self_ref": "#/tables/0",
+      "label": "table",
+      "prov": [
+        {
+          "page_no": 1,
+          "bbox": {
+            "l": 72,
+            "t": 96,
+            "r": 540,
+            "b": 232,
+            "coord_origin": "TOPLEFT"
+          }
+        }
+      ],
+      "data": {
+        "num_rows": 4,
+        "num_cols": 3,
+        "table_cells": [
+          {
+            "text": "Sample",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "column_header": true,
+            "row_header": true,
+            "bbox": {
+              "l": 72,
+              "t": 96,
+              "r": 228,
+              "b": 130,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "Dose (mg)",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "column_header": true,
+            "row_header": false,
+            "bbox": {
+              "l": 228,
+              "t": 96,
+              "r": 384,
+              "b": 130,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "Volume (ml)",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 0,
+            "end_row_offset_idx": 1,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "column_header": true,
+            "row_header": false,
+            "bbox": {
+              "l": 384,
+              "t": 96,
+              "r": 540,
+              "b": 130,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "Alpha",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "column_header": false,
+            "row_header": true,
+            "bbox": {
+              "l": 72,
+              "t": 130,
+              "r": 228,
+              "b": 164,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "12.5",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "column_header": false,
+            "row_header": false,
+            "bbox": {
+              "l": 228,
+              "t": 130,
+              "r": 384,
+              "b": 164,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "3.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 1,
+            "end_row_offset_idx": 2,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "column_header": false,
+            "row_header": false,
+            "bbox": {
+              "l": 384,
+              "t": 130,
+              "r": 540,
+              "b": 164,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "Beta",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "column_header": false,
+            "row_header": true,
+            "bbox": {
+              "l": 72,
+              "t": 164,
+              "r": 228,
+              "b": 198,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "20.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "column_header": false,
+            "row_header": false,
+            "bbox": {
+              "l": 228,
+              "t": 164,
+              "r": 384,
+              "b": 198,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "4.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 2,
+            "end_row_offset_idx": 3,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "column_header": false,
+            "row_header": false,
+            "bbox": {
+              "l": 384,
+              "t": 164,
+              "r": 540,
+              "b": 198,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "Gamma",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 0,
+            "end_col_offset_idx": 1,
+            "column_header": false,
+            "row_header": true,
+            "bbox": {
+              "l": 72,
+              "t": 198,
+              "r": 228,
+              "b": 232,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "30.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 1,
+            "end_col_offset_idx": 2,
+            "column_header": false,
+            "row_header": false,
+            "bbox": {
+              "l": 228,
+              "t": 198,
+              "r": 384,
+              "b": 232,
+              "coord_origin": "TOPLEFT"
+            }
+          },
+          {
+            "text": "5.0",
+            "row_span": 1,
+            "col_span": 1,
+            "start_row_offset_idx": 3,
+            "end_row_offset_idx": 4,
+            "start_col_offset_idx": 2,
+            "end_col_offset_idx": 3,
+            "column_header": false,
+            "row_header": false,
+            "bbox": {
+              "l": 384,
+              "t": 198,
+              "r": 540,
+              "b": 232,
+              "coord_origin": "TOPLEFT"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "groups": [],
+  "texts": [],
+  "pages": {
+    "1": {
+      "page_no": 1,
+      "size": {
+        "width": 612,
+        "height": 792
+      }
+    }
+  }
+}
